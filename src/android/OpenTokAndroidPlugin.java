@@ -545,6 +545,7 @@ public class OpenTokAndroidPlugin extends CordovaPlugin
         // TB Methods
         if (action.equals("initPublisher")) {
             myPublisher = new RunnablePublisher(args);
+            myPublisher.startPublishing();
         } else if (action.equals("destroyPublisher")) {
             if (myPublisher != null) {
                 myPublisher.destroyPublisher();
