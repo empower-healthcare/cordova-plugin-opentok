@@ -22,7 +22,9 @@ class TBSession
     if( typeof(connectCompletionCallback) != "function" and connectCompletionCallback? )
       TB.showError( "Session.connect() takes a token and an optional completionHandler" )
       return
-    if( connectCompletionCallback? ) then @on('sessionConnected', connectCompletionCallback)
+    if( connectCompletionCallback? )
+      errorCallback = (error) -> connectCompletionCallback(error)
+      @on('sessionConnected', connectCompletionCallback)
     Cordova.exec(@eventReceived, TBError, OTPlugin, "addEvent", ["sessionEvents"] )
     Cordova.exec(TBSuccess, TBError, OTPlugin, "connect", [@token] )
     return
