@@ -542,7 +542,7 @@ public class OpenTokAndroidPlugin extends CordovaPlugin
     @Override
     public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
         Log.i(TAG, action);
-        // TB Methods
+        mSession.connect(args.getString(0));
         if (action.equals("initPublisher")) {
             myPublisher = new RunnablePublisher(args);
             myPublisher.startPublishing();
